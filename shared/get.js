@@ -18,12 +18,11 @@ const got = require('got');
 const pkg = require('../package.json');
 
 const get = (url, options) => {
-	return got(url, {
-		...options,
+	return got(url, Object.assign({}, options, {
 		headers: {
 			'User-Agent': `${pkg.name}/${pkg.version} (+${pkg.homepage})`
-		},
-	});
+		}
+	}));
 };
 
 module.exports = get;
